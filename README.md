@@ -1,7 +1,7 @@
 # PythonWalker
 A Python based bot library for [PixelWalker](https://pixelwalker.net)
 
-Examples can be found [here](/examples).
+Examples can be found [here](https://github.com/Tycho10101/PythonWalker/tree/main/examples).
 
 ## Setup
 - In a command line, run `pip install PythonWalker`
