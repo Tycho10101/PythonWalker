@@ -6,6 +6,7 @@ Examples can be found [here](/examples).
 ## Setup
 - Put the `/PythonWalker` directory from this repository into the root of your program
 - Put `import PythonWalker as pw` in your main.py or main Python script
+- Install the Requests and Websockets libraries
 
 ## Features
 - Connect to rooms
