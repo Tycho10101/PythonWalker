@@ -16,10 +16,11 @@ Examples can be found [here](https://github.com/Tycho10101/PythonWalker/tree/mai
 - Connect to rooms
 - Chat functions
 - Recive leave and join packets
+- Custom commands
 
 ## Todo List
-- Custom commands
 - Blocks
+- Private Messaging
 - And more! (suggest them in the issues page)
 
 Thanks to the folks on the Discord for helping me out!
