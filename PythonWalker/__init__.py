@@ -13,7 +13,7 @@ def login_with_pass(email, password):
     player.id = record["id"]
     return player
 
-def connect(world_id, user, on_chat=None, on_init=None, on_join=None, on_leave=None, commands=None):
+def connect(world_id, user, on_chat=None, on_init=None, on_join=None, on_leave=None, commands=None, custom_init=False):
     version = requests.get("https://game.pixelwalker.net/listroomtypes").json()[0]
     headers = {"Authorization": f"Bearer {user.token}"}
     r = requests.get(f"https://api.pixelwalker.net/api/joinkey/{version}/{world_id}", headers=headers)
@@ -28,8 +28,10 @@ def connect(world_id, user, on_chat=None, on_init=None, on_join=None, on_leave=N
             #print(f"Received: {packet}")
             
             if packet.HasField("player_init_packet"):
-                send = world_pb2.WorldPacket(player_init_received=world_pb2.PlayerInitReceivedPacket()).SerializeToString()
-                websocket.send(send)
+                if not custom_init:
+                    send = world_pb2.WorldPacket(player_init_received=world_pb2.PlayerInitReceivedPacket()).SerializeToString()
+                    websocket.send(send)
+                    
                 if commands:
                     for command in commands.keys():
                         cmd = world_pb2.PlayerChatPacket()
