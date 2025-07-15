@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>World Spy</title>
+    <link rel="stylesheet" href="/static/icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preload" href="/assets/bg_1.png" as="image">
+	<link rel="preload" href="/assets/bg_2.png" as="image">
+	<link rel="preload" href="/assets/bg_3.png" as="image">
+	<link rel="preload" href="/assets/bg_4.png" as="image">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="game">
+      <div class="lobby">
+		<div class="looping-background"><div class="background" style="opacity: 1;"><img src="/assets/bg_1.png"></div></div>
+        <div class="topbar">
+          <div class="left-side">
+            <div class="tab-button active">
+              <i class="fa-solid fa-earth-americas"></i>World Spy
+            </div>
+          </div>
+        </div>
+        <div class="container page-lobby active" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px);">
+          <div class="left-side">
+            <div class="info">
+              <div class="line">
+                <i class="fas fa-user"></i>
+                <span>{{ ponline }} players online</span>
+              </div>
+              <div class="line">
+                <i class="fas fa-earth-americas"></i>
+                <span>{{ wonline }} worlds online</span>
+              </div>
+            </div>
+            <div class="world-list">
+              <div class="tabs">
+                <div class="tab active">
+                  <i class="fa-solid fa-earth-americas"></i>Online
+                </div>
+                <div class="tab">More Soon...</div>
+              </div>
+              <div class="controls">
+                <div class="search">
+                  <i class="fa-solid fa-search"></i>
+                  <input type="text" placeholder="Search...">
+                </div>
+              </div>
+              <div class="container active"> {% if worlds %} {% for world in worlds %} <div class="item" onclick="getWorldInfo('{{ world.id }}');">
+                  <div class="status-ball online">
+                    <i class="fas {{ world.icon }}"></i>
+                  </div>
+                  <div class="name">
+                    <div class="title">{{ world.data.title }}</div>
+                  </div>
+                  <div class="stat" title="Plays">
+                    <i class="fas fa-play"></i>{{ world.data.plays }}
+                  </div>
+                  {% if world.data.woots %}<div class="stat" title="Woots">
+                    <i class="fas fa-star"></i>{{ world.data.woots }}
+                  </div>{% endif %}
+                  <div class="stat" title="Players Online">
+                    <i class="fas fa-users"></i>{{ world.players }}/{{ world.max_players }}
+                  </div>
+                  <div class="info-button">
+                    <i class="fas fa-info-circle" onclick="openInfo('{{ world.data.title }}', '{{ world.data.description }}', '{{ world.id }}', '{{ world.data.owner }}');"></i>
+                  </div>
+                </div> {% endfor %} {% else %} <p>No worlds online at the moment.</p> {% endif %} </div>
+            </div>
+          </div>
+		  <div class="right-side">
+		    <div class="standard-box player-profile-info"><div class="smiley"><img src="/static/icon.png"></div><div class="container"><div class="username" style="color: rgb(255, 255, 255);">World Spy</div><div class="logout">Created by Tycho10101</div></div></div>
+			<div class="standard-box friends" id="friends-box"><div class="header"><div class="title">About</div><div class="button add-friend" onclick="window.open('https://github.com/Tycho10101/PythonWalker/tree/main/examples/World Spy', '_blank').focus();"><i class="fa-brands fa-github"></i></div></div><div class="list"><div>{% include 'about.html' %}</div></div></div>
+		  </div>
+		  <div class="version">v{{version}}</div>
+        </div>
+      </div>
+    </div>
+	<script src="static/script.js"></script> 
+  </body>
+</html>
