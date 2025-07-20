@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
 	name="PythonWalker",  # Replace with your project name
-	version="0.2.2",
+	version="0.2.3",
 	packages=find_packages(),  # Automatically finds packages in your project
 	install_requires=[
 		"requests>=2.32.3",
