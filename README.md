@@ -10,7 +10,7 @@ Examples can be found [here](https://github.com/Tycho10101/PythonWalker/tree/mai
 ## Setup (Manual)
 - Put the `/PythonWalker` directory from this repository into the root of your program
 - Put `import PythonWalker as pw` in your main.py or main Python script
-- Install the Requests and Websockets libraries
+- Install the Protobuf, Requests, and Websockets libraries
 
 ## Features
 - Connect to rooms
