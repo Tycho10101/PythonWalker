@@ -2,11 +2,12 @@ from setuptools import setup, find_packages
 
 setup(
 	name="PythonWalker",  # Replace with your project name
-	version="0.2.1",
+	version="0.2.2",
 	packages=find_packages(),  # Automatically finds packages in your project
 	install_requires=[
 		"requests>=2.32.3",
 		"websockets>=13.1",
+		"protobuf",
 	],
 	author="Tycho10101",
 	author_email="supallawma@gmail.com",
