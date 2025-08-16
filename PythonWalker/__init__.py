@@ -18,17 +18,17 @@ def login_with_pass(email, password):
 
 def connect(world_id, user, on_chat=None, on_init=None, on_join=None, on_leave=None, on_block=None, commands=None, custom_init=False):
     print("Getting world type...")
-    version = requests.get("https://game.pixelwalker.net/listroomtypes").json()[0]
+    version = requests.get("https://server.pixelwalker.net/listroomtypes").json()[0]
     print("Getting join key...")
     headers = {"Authorization": f"Bearer {user.token}"}
     r = requests.get(f"https://api.pixelwalker.net/api/joinkey/{version}/{world_id}", headers=headers)
     join_key = r.json()["token"]
     player_list = {}
     print("Gathering block info...")
-    block_list = requests.get('https://game.pixelwalker.net/listblocks').json()
+    block_list = requests.get('https://server.pixelwalker.net/listblocks').json()
     
     print("Connecting...")
-    with ws_conn(f"wss://game.pixelwalker.net/ws?joinKey={join_key}", max_size=None) as websocket:
+    with ws_conn(f"wss://server.pixelwalker.net/ws?joinKey={join_key}", max_size=None) as websocket:
         print("Connected")
         while True:
             message = websocket.recv()
